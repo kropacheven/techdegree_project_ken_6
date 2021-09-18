@@ -42,26 +42,49 @@ let getRandomPhrase = getRandomPhraseAsArray(phrases);
 console.log(getRandomPhrase);
 
 
-/*
+
 // 6. getToDisplay function (6)
-function addPhraseToDisplay(arr){
-    // do stuff any arr that is passed in, and add to `#phrase ul`
+
+function addPhraseToDisplay(arr) {
+    let items = '';
+    for (let i =0; i < arr.length; i++) {
+        items  += `<li>  ${ arr[i] } </li>`;
+    }
+    return items;   
+
 }
 
-const phraseArray = getRandomPhraseAsArray(phrases);
-addPhrasetoDisplay(phraseArray); 
+document.querySelector('#phrase ul').innerHTML = `
+    <ul>
+        ${addPhraseToDisplay(getRandomPhrase)}
+    </ul>
+`;
 
-//Checkletter function (7)
+let li = document.getElementsByTagName('#phrases li');
+console.log('li');
+if (li.textContent !== " ") {
+    li.className = "letter";
+} else {
+    li.className = "space";
+}
+
+ 
+
+
+/*
+// 7. Checkletter function:
 const checkLetter = button => {
 
 }
 
-//Add an event listener to key board - MDN documentatin (8)
+
+// 8. Add an event listener to key board (--- MDN documentation):
 getQwerty.addEventListener('click', e => {
 
 } );
 
 
+/*
 //Count the missed guesses (9)
 
 
