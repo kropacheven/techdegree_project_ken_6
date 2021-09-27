@@ -1,6 +1,6 @@
 
 //JS DOM (2, 3)
-let getQwerty = document.getElementById('#qwerty');
+let getQwerty = document.getElementById('qwerty');
 let getPhrase = document.getElementById('#phrase');
 let startButton = document.querySelector('.btn_reset');
 let overlayChange = document.getElementById('overlay');
@@ -45,49 +45,72 @@ console.log(getRandomPhrase);
 
 // 6. getToDisplay function (6)
 
+const phraseDisplay = document.querySelector("#phrase ul");
+
 function addPhraseToDisplay(arr) {
-    let items = '';
-    for (let i =0; i < arr.length; i++) {
-        items  += `<li>  ${ arr[i] } </li>`;
+    arr.forEach(arr => {
+         let li = document.createElement("li");
+         li.textContent = arr.toUpperCase();
+         phraseDisplay.appendChild(li);
+       if (li.textContent !== " ") {
+             li.className = "letter";
+         } else {
+             li.className = "space";
+         }
+    });
+  };
+
+  const phraseArray = addPhraseToDisplay(getRandomPhrase);
+
+
+    // 7. Checkletter function:
+
+function checkLetter(buttonClicked) {
+    let letter;
+    const elementsWithClass = document.getElementsByClassName('letter');
+    for (let i= 0; i <elementsWithClass.length; i++) {
+        if (elementsWithClass[i].textContent === buttonClicked.textContent )
+        { elementsWithClass[i] = elementsWithClass[i].classList.add('show');
+         letter = elementsWithClass[i];
+        }
     }
-    return items;   
-
-}
-
-document.querySelector('#phrase ul').innerHTML = `
-    <ul>
-        ${addPhraseToDisplay(getRandomPhrase)}
-    </ul>
-`;
-
-let li = document.getElementsByTagName('#phrases li');
-console.log('li');
-if (li.textContent !== " ") {
-    li.className = "letter";
-} else {
-    li.className = "space";
-}
-
- 
-
-
-/*
-// 7. Checkletter function:
-const checkLetter = button => {
-
+    return letter;
 }
 
 
 // 8. Add an event listener to key board (--- MDN documentation):
-getQwerty.addEventListener('click', e => {
+//getQwerty.addEventListener('click', e => {
+//} );
 
-} );
+getQwerty.addEventListener("click", event => {
+    if (event.target.tagName === "BUTTON") {
+        const button = event.target;
+        button.className = "chosen";
+        button.disabled = "true";
+        let letterFound = checkLetter(button); 
 
+// 9. Count the missed guesses:
+
+function removeHeart(index) {
+    const img = document.querySelectorAll("img")[index];
+    img.src = "images/lostHeart.png"; }
+            if (!letterFound) {
+                  missed++;
+                removeHeart(0);
+            } else if (missed === 2) {
+                removeHeart(1)
+            } else if (missed === 3) {
+                removeHeart(2)
+            } else if (missed === 4) {
+                removeHeart(3);
+            } else if (missed === 5) {
+                removeHeart(4);
+            }
+
+        }
+});
 
 /*
-//Count the missed guesses (9)
-
-
 //Create check-win function (10)
 
 
@@ -98,7 +121,3 @@ getQwerty.addEventListener('click', e => {
 // 1. Create CSS transitions for each letter in the phrase display as they are revealed.
 
 // 2. Add a button to the “success” and “failure” screens that reset the game. You’ll have to recreate the buttons in the keyboard, generate a new random phrase, and set the number of misses to zero.
-
-
-
-
