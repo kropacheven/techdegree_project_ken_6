@@ -50,7 +50,7 @@ const phraseDisplay = document.querySelector("#phrase ul");
 function addPhraseToDisplay(arr) {
     arr.forEach(arr => {
          let li = document.createElement("li");
-         li.textContent = arr.toUpperCase();
+         li.textContent = arr;
          phraseDisplay.appendChild(li);
        if (li.textContent !== " ") {
              li.className = "letter";
@@ -58,12 +58,12 @@ function addPhraseToDisplay(arr) {
              li.className = "space";
          }
     });
-  };
+};
 
-  const phraseArray = addPhraseToDisplay(getRandomPhrase);
+const phraseArray = addPhraseToDisplay(getRandomPhrase);
 
 
-    // 7. Checkletter function:
+  // 7. Checkletter function:
 
 function checkLetter(buttonClicked) {
     let letter;
@@ -79,9 +79,6 @@ function checkLetter(buttonClicked) {
 
 
 // 8. Add an event listener to key board (--- MDN documentation):
-//getQwerty.addEventListener('click', e => {
-//} );
-
 getQwerty.addEventListener("click", event => {
     if (event.target.tagName === "BUTTON") {
         const button = event.target;
@@ -93,25 +90,28 @@ getQwerty.addEventListener("click", event => {
 
 function removeHeart(index) {
     const img = document.querySelectorAll("img")[index];
-    img.src = "images/lostHeart.png"; }
-            if (!letterFound) {
+    img.src = "images/lostHeart.png"; 
+        }
+         if (!letterFound) {
                   missed++;
                 removeHeart(0);
-            } else if (missed === 2) {
+        } else if (missed === 2) {
                 removeHeart(1)
-            } else if (missed === 3) {
+        } else if (missed === 3) {
                 removeHeart(2)
-            } else if (missed === 4) {
+        } else if (missed === 4) {
                 removeHeart(3);
-            } else if (missed === 5) {
+        } else if (missed === 5) {
                 removeHeart(4);
-            }
-
         }
+
+    }
 });
 
+
+
 /*
-//Create check-win function (10)
+// 10. Create check-win function
 
 
 
