@@ -1,6 +1,6 @@
 
 //JS DOM (2, 3)
-let getQwerty = document.getElementById('qwerty');
+let getQwerty = document.querySelector('#qwerty');
 let getPhrase = document.getElementById('#phrase');
 let startButton = document.querySelector('.btn_reset');
 let overlayChange = document.getElementById('overlay');
@@ -65,11 +65,11 @@ const phraseArray = addPhraseToDisplay(getRandomPhrase);
 
   // 7. Checkletter function:
 
-function checkLetter(buttonClicked) {
+function checkLetter(button) {
     let letter;
     const elementsWithClass = document.getElementsByClassName('letter');
     for (let i= 0; i <elementsWithClass.length; i++) {
-        if (elementsWithClass[i].textContent === buttonClicked.textContent )
+        if (elementsWithClass[i].textContent === button.textContent )
         { elementsWithClass[i] = elementsWithClass[i].classList.add('show');
          letter = elementsWithClass[i];
         }
@@ -84,28 +84,30 @@ getQwerty.addEventListener("click", event => {
         const button = event.target;
         button.className = "chosen";
         button.disabled = "true";
-        let letterFound = checkLetter(button); 
+        let letter = checkLetter(button); 
+        console.log(letter);
 
 // 9. Count the missed guesses:
 
-function removeHeart(index) {
-    const img = document.querySelectorAll("img")[index];
-    img.src = "images/lostHeart.png"; 
-        }
-         if (!letterFound) {
-                  missed++;
-                removeHeart(0);
-        } else if (missed === 2) {
-                removeHeart(1)
-        } else if (missed === 3) {
-                removeHeart(2)
-        } else if (missed === 4) {
-                removeHeart(3);
-        } else if (missed === 5) {
-                removeHeart(4);
-        }
+        function removeHeart(index) {
+        const img = document.querySelectorAll("img")[index];
+        img.src = "images/lostHeart.png"; 
+            }
+            if (!letter) {
+                    missed++;
+                    removeHeart(0);
+            } else if (missed === 2) {
+                    removeHeart(1)
+            } else if (missed === 3) {
+                    removeHeart(2)
+            } else if (missed === 4) {
+                    removeHeart(3);
+            } else if (missed === 5) {
+                    removeHeart(4);
+            }
 
-    }
+            
+        }
 });
 
 
