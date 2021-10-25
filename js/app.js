@@ -86,31 +86,13 @@ getQwerty.addEventListener("click", event => {
         button.disabled = "true";
         let letter = checkLetter(button); 
         console.log(letter);
-
 // 9. Count the missed guesses:
-
-        function removeHeart(index) {
-        const img = document.querySelectorAll("img")[index];
-        img.src = "images/lostHeart.png"; 
-            }
-            if (!letter) {
-                    missed++;
-                    removeHeart(0);
-            } else if (missed === 2) {
-                    removeHeart(1)
-            } else if (missed === 3) {
-                    removeHeart(2)
-            } else if (missed === 4) {
-                    removeHeart(3);
-            } else if (missed === 5) {
-                    removeHeart(4);
-            }
-
-            
+        if (!letter) {
+            const img = document.querySelectorAll("img");
+            img[missed].src = "images/lostHeart.png"; 
+            missed++; }
         }
-});
-
-
+    });
 
 /*
 // 10. Create check-win function
