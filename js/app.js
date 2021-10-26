@@ -85,20 +85,40 @@ getQwerty.addEventListener("click", event => {
         button.className = "chosen";
         button.disabled = "true";
         let letter = checkLetter(button); 
-        console.log(letter);
+        //console.log(letter);
 // 9. Count the missed guesses:
         if (!letter) {
             const img = document.querySelectorAll("img");
             img[missed].src = "images/lostHeart.png"; 
             missed++; }
         }
-    });
+});
+
+
+// 10. Create check-win function
+const liLetter = document.querySelectorAll(".letter");
+const liShow = document.querySelectorAll(".show");
+const header = document.querySelector('h2');
+
+
+console.log(liLetter);
+console.log(liShow);
+console.log(header);
+
+const checkWin = () => {
+    if (liLetter.length === liShow.length) {
+          //overlay.className = ('win');
+          header.textContent = "You Won!";
+          overlay.style.display = "flex";
+          //console.log(checkWin);
+        } else if ( missed > 4 ) {
+          //overlay.className = ('lose');
+          header.textContent = "You Lost. Try Again!"
+          overlay.style.display = "flex"
+        }
+ }
 
 /*
-// 10. Create check-win function
-
-
-
 
 /* Extra credits */
 
