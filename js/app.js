@@ -92,30 +92,35 @@ getQwerty.addEventListener("click", event => {
             img[missed].src = "images/lostHeart.png"; 
             missed++; }
         }
+
+        //checkWin();   -- function callback try later;
 });
 
 
 // 10. Create check-win function
-const liLetter = document.querySelectorAll("li.letter");
-const liShow = document.querySelectorAll("li.show");
-const headline = document.querySelector('h2');
+//console.log(liLetter);
+//console.log(liShow);
+//console.log(headline);
 
-
-console.log(liLetter);
-console.log(liShow);
-console.log(headline);
 
 const checkWin = () => {
+
+    const liLetter = document.querySelectorAll("li.letter");
+    const liShow = document.querySelectorAll("li.show");
+    const headline = document.querySelector('h2');
+
     if (liLetter.length === liShow.length) {
-          overlay.className = ('win');
+          overlayChange.className = 'win';
           headline.textContent = "You've won!";
-          overlay.style.display = "flex";
+          overlayChange.style.display = "flex";
+          console.log(checkWin);
         } else if ( missed > 4 ) {
-          overlay.className = ('lose');
+          overlayChange.className = 'lose';
           headline.textContent = "You've lost.";
-          overlay.style.display = "flex";
+          overlayChange.style.display = "flex";
         }
  }
+
 
 /*
 
