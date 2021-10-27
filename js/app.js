@@ -107,12 +107,11 @@ console.log(headline);
 
 const checkWin = () => {
     if (liLetter.length === liShow.length) {
-          overlay.className = 'win';
+          overlay.className = ('win');
           headline.textContent = "You've won!";
           overlay.style.display = "flex";
-          //console.log(checkWin);
         } else if ( missed > 4 ) {
-          overlay.className = 'lose';
+          overlay.className = ('lose');
           headline.textContent = "You've lost.";
           overlay.style.display = "flex";
         }
