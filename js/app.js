@@ -96,25 +96,25 @@ getQwerty.addEventListener("click", event => {
 
 
 // 10. Create check-win function
-const liLetter = document.querySelectorAll(".letter");
-const liShow = document.querySelectorAll(".show");
-const header = document.querySelector('h2');
+const liLetter = document.querySelectorAll("li.letter");
+const liShow = document.querySelectorAll("li.show");
+const headline = document.querySelector('h2');
 
 
 console.log(liLetter);
 console.log(liShow);
-console.log(header);
+console.log(headline);
 
 const checkWin = () => {
     if (liLetter.length === liShow.length) {
-          //overlay.className = ('win');
-          header.textContent = "You Won!";
+          overlay.className = 'win';
+          headline.textContent = "You've won!";
           overlay.style.display = "flex";
           //console.log(checkWin);
         } else if ( missed > 4 ) {
-          //overlay.className = ('lose');
-          header.textContent = "You Lost. Try Again!"
-          overlay.style.display = "flex"
+          overlay.className = 'lose';
+          headline.textContent = "You've lost.";
+          overlay.style.display = "flex";
         }
  }
 
