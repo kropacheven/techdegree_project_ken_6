@@ -2,13 +2,13 @@
 //JS DOM (2, 3)
 let getQwerty = document.querySelector('#qwerty');
 let getPhrase = document.getElementById('#phrase');
-let startButton = document.querySelector('.btn_reset');
+let startButton = document.querySelector('.btn__reset');
 let overlayChange = document.getElementById('overlay');
 
 let missed = 0;
 
 //listen for the start game button to be pressed
-document.addEventListener('click', () => {
+startButton.addEventListener('click', () => {
     overlayChange.style.display = 'none';
 });
 
