@@ -4,6 +4,7 @@ let getQwerty = document.querySelector('#qwerty');
 let getPhrase = document.getElementById('#phrase');
 let startButton = document.querySelector('.btn__reset');
 let overlayChange = document.getElementById('overlay');
+const ul = phrase.querySelector('ul');
 
 let missed = 0;
 
@@ -109,18 +110,33 @@ const checkWin = () => {
           overlayChange.className = ('win');
           headline.textContent = "You've won!";
           overlayChange.style.display = "flex";
+          resetGame();
         } else if ( missed > 4 ) {
           overlayChange.className = ('lose');
           headline.textContent = "You've lost.";
           overlayChange.style.display = "flex";
+          resetGame();
         }
  }
 
 
-/*
+// Extra - add a button to the “success” and “failure” screens that reset the game. You’ll have to recreate the buttons in the keyboard, generate a new random phrase, and set the number of misses to zero.
 
-/* Extra credits */
+const resetGame = () => {
+    ul.textContent = '';
+    missed=0;
+    const lives = document.querySelectorAll('img');
+        for (let i=0; i<lives.length; i++) {
+            lives[i].src='images/liveHeart.png';
+        }
+    
+    let getRandomPhrase = getRandomPhraseAsArray(phrases);
+    addPhraseToDisplay(getRandomPhrase)
 
-// 1. Create CSS transitions for each letter in the phrase display as they are revealed.
+    const chosenLetters = document.querySelectorAll('.chosen');
+    for (let i = 0; i < chosenLetters.length; i++ ) {
+        chosenLetters[i].classList.remove('chosen');
+        chosenLetters[i].disabled = false;
+    }
 
-// 2. Add a button to the “success” and “failure” screens that reset the game. You’ll have to recreate the buttons in the keyboard, generate a new random phrase, and set the number of misses to zero.
+}
