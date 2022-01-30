@@ -1,2 +1,3 @@
 # techdegree_project_ken_6
-project 6
+See the project online: https://kropacheven.github.io/techdegree_project_ken_6/
+
